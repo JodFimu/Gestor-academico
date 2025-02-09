@@ -5,4 +5,7 @@ package-lock.json
 .env
 
 public/uploads/course-pictures/*
+!public/uploads/course-pictures/.gitkeep
+
 public/uploads/profile-pictures/*
+!public/uploads/profile-pictures/.gitkeep
