@@ -4,10 +4,10 @@ import { generateJwt } from "../helpers/generate-jwt.js";
 
 export const registerStudent = async (req, res) => {
     try{
-        const data = req.body
-        let profilePicture = req.file ? req.file.fileName : null;
+        const data = req.body;
+        let profilePicture = req.file ? req.file.filename : null;
         const encryptedPassword = await hash(data.password, 10)
-        data.password = encryptedPassword;
+        data.password = encryptedPassword
         data.profilePicture = profilePicture
         const user = await User.create(data);
 
@@ -52,11 +52,10 @@ export const registerTeacher = async (req, res) => {
 }
 
 export const login = async (req, res) =>{
-    const { email, userName, password} = req.body
+    const body = req.body
     try{
-        const user = await User.findOne({
-            $or:[{email: email}, {userName: userName}]
-        })
+        const email = body.email
+        const user = await User.findOne({email})
 
         if(!user){
             return res.status(400).json({
@@ -65,7 +64,7 @@ export const login = async (req, res) =>{
             })
         }
 
-        const validPassword = await compare( password, user.password)
+        const validPassword = await compare( body.password, user.password)
 
 
         if(!validPassword){
@@ -81,7 +80,7 @@ export const login = async (req, res) =>{
             message: "login succesful",
             userDetails: {
                 token: token,
-                profilePicture: user.profilePicture
+                user: user
             }
             
         })

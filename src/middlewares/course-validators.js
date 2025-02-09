@@ -12,3 +12,8 @@ export const courseIdValidator = [
     check("cid").isMongoId().withMessage("Invalid course id"),
     validarCampos
 ]
+
+export const updateCourseValidator = [
+    check("cid").isMongoId().withMessage("Invalid course id"),
+    validarCampos
+]

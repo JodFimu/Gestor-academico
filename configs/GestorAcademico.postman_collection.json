@@ -1,0 +1,644 @@
+{
+	"info": {
+		"_postman_id": "68869bc6-1fac-4ece-9bcb-21337cecce59",
+		"name": "GestorAcademico",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41959042"
+	},
+	"item": [
+		{
+			"name": "registrar alumno",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "jose",
+							"type": "text"
+						},
+						{
+							"key": "surname",
+							"value": "figueroa",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jfigueroa-2023015@kinal.edu.gt",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						},
+						{
+							"key": "profilePicture",
+							"type": "file",
+							"src": "/C:/Users/jdfig/Pictures/Camera Roll/WIN_20240610_11_26_42_Pro.jpg"
+						},
+						{
+							"key": "phone",
+							"value": "12345678",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/auth/registerStudent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"auth",
+						"registerStudent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registrar maestro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Braulio",
+							"type": "text"
+						},
+						{
+							"key": "surname",
+							"value": "Echeverria",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "braulio@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "87654321",
+							"type": "text"
+						},
+						{
+							"key": "profilePicture",
+							"type": "file",
+							"src": "/C:/Users/jdfig/Pictures/Camera Roll/WhatsApp Image 2022-10-05 at 8.47.13 AM.jpeg"
+						},
+						{
+							"key": "phone",
+							"value": "09876543",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/auth/registerTeacher",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"auth",
+						"registerTeacher"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"87654321\",\r\n    \"email\": \"braulio@gmail.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscar usuario por id",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/user/finduser/67a7fe153a3c54db8c790582",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"user",
+						"finduser",
+						"67a7fe153a3c54db8c790582"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar usuarios",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar usuario",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/user/deleteUser/67a8c03ce93e7f11e5e41590",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"user",
+						"deleteUser",
+						"67a8c03ce93e7f11e5e41590"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar constraseña",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"newPassword\":\"09876543\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/user/updatePassword/67a7fe153a3c54db8c790582",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"user",
+						"updatePassword",
+						"67a7fe153a3c54db8c790582"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar usuario",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"david\",\r\n    \"surname\":\"muñoz\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/user/updateUser/67a7fe153a3c54db8c790582",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"user",
+						"updateUser",
+						"67a7fe153a3c54db8c790582"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar foto de perfil",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "profilePicture",
+							"type": "file",
+							"src": "/C:/Users/jdfig/Pictures/Saved Pictures/0_0.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/user/updateProfilePicture/67a7fe153a3c54db8c790582?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"user",
+						"updateProfilePicture",
+						"67a7fe153a3c54db8c790582"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear curso",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Taller",
+							"contentType": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Curso de Taller",
+							"contentType": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "coursePicture",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "teacher",
+							"value": "67a7fecf3a3c54db8c790586",
+							"contentType": "application/json",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/course/createCourse",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"course",
+						"createCourse"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar cursos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/course/getCourses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"course",
+						"getCourses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscar cursos por id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/course/getCourseById/67a8cf11cfd75181d1c4e9d6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"course",
+						"getCourseById",
+						"67a8cf11cfd75181d1c4e9d6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar curso",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Taller",
+							"contentType": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Curso de Taller",
+							"contentType": "application/json",
+							"type": "text"
+						},
+						{
+							"key": "coursePicture",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "teacher",
+							"value": "67a7fecf3a3c54db8c790586",
+							"contentType": "application/json",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/course/deleteCourse/67a8cf11cfd75181d1c4e9d6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"course",
+						"deleteCourse",
+						"67a8cf11cfd75181d1c4e9d6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar cursos de un mastro",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/course/getCoursesByTeacher/67a7fecf3a3c54db8c790586",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"course",
+						"getCoursesByTeacher",
+						"67a7fecf3a3c54db8c790586"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "asignar cursos a un usuario",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cid\": \"67a8cf11cfd75181d1c4e9d6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/user/asingCourse/67a7fe153a3c54db8c790582",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"user",
+						"asingCourse",
+						"67a7fe153a3c54db8c790582"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar cursos de un alumno",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/course/getStudentCourses/67a7fe153a3c54db8c790582",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"course",
+						"getStudentCourses",
+						"67a7fe153a3c54db8c790582"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar curso",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:3000/gestorAcademico/v1/course/updateCourse/67a8cf11cfd75181d1c4e9d6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"gestorAcademico",
+						"v1",
+						"course",
+						"updateCourse",
+						"67a8cf11cfd75181d1c4e9d6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

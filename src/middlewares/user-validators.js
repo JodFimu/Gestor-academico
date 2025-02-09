@@ -29,17 +29,9 @@ export const updatePasswordValidator = [
 export const updateUserValidator = [
     check("uid").isMongoId().withMessage("No es un id valido"),
     check("uid").custom(userExist),
-    body("email").isEmail().withMessage("Invalid Email"),
+    body("email").optional().isEmail().withMessage("Invalid Email"),
     body("email").custom(emailExists),
     body("userName").custom(userNameExists),
-    /*body("password").isStrongPassword({
-        minLength: 8,
-        minLowercase: 1,
-        minUppercase: 1,
-        minNumbers: 1,
-        minSymbols: 1
-
-    })*/
     validarCampos,
     deleteFileOnError
 ]

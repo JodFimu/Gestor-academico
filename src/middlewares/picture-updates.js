@@ -1,21 +1,34 @@
 import fs from "fs";
 import path from "path";    
+import User from "../user/user.model.js";
 
-export const deleteProfilePicture = (req, res, next) => {
+import { dirname,} from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export const deleteProfilePicture = async (req, res, next) => {
     try {
-        const { picture } = req.body;
+        const { uid } = req.params;
 
-        if (!picture) {
+        const user = await User.findById(uid);
+
+        if (!user || !user.profilePicture) {
             return next();
         }
 
-        const filePath = path.join(__dirname, '../../public/uploads/profile-pictures', picture);
+        const filePath = path.join(__dirname, '../../public/uploads/profile-pictures', user.profilePicture);
 
-        fs.unlink(filePath);
-
-        return res.status(200).json({
-            success: true,
-            message: "Profile picture deleted"
+        fs.unlink(filePath, (err) => {
+            if (err) {
+        return res.status(500).json({
+            success: false,
+            message: "Error deleting profile picture",
+                    error: err.message
+                });
+            }
+            next();
         });
     } catch (error) {
         return res.status(500).json({
@@ -23,7 +36,5 @@ export const deleteProfilePicture = (req, res, next) => {
             message: "Error deleting profile picture",
             error: error.message
         });
-        
-    }
-    
-};
+            }
+    };

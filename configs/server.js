@@ -6,7 +6,7 @@ import helmet from "helmet";
 import cors from "cors";
 
 import { dbConecction } from "./mongo.js";
-import { apiLimiter } from "../src/middlewares/validators.js";
+import { apiLimiter } from "../src/middlewares/user-validators.js";
 import authRoutes from "../src/auth/auth.routes.js";
 import userRoutes from "../src/user/user.routes.js";
 import courseRoutes from "../src/course/course.routes.js";

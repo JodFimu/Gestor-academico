@@ -103,7 +103,7 @@ export const updatePassword = async (req, res) =>{
 
         const encryptedPassword = await hash(newPassword, 10)
 
-        const user = await User.findByIdAndUpdate(uid, {password:encryptedPassword}, {new: true})
+        await User.findByIdAndUpdate(uid, {password:encryptedPassword}, {new: true})
 
         return res.status(200).json({
             succes:true,
@@ -120,22 +120,32 @@ export const updatePassword = async (req, res) =>{
 
 export const updateProfilePicture = async (req, res) =>{
     try{
-        const {uid} = req.params
-        const {filename} = req.file
+        const { uid } = req.params;
+        const { filename } = req.file;
 
-        const user = await User.findByIdAndUpdate(uid, {profilePicture: filename}, {new: true})
+        const user = await User.findById(uid);
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "Usuario no encontrado"
+            });
+        }
+
+        user.profilePicture = filename;
+        await user.save();
 
         res.status(200).json({
             success: true,
             message: "Foto de perfil actualizada",
             user
-        })
+        });
     }catch(err){
         return res.status(500).json({
             success: false,
             message: "Error al actualizar la foto de perfil",
             error: err.message
-        })
+        });
     }
 }
 

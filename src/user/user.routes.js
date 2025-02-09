@@ -4,6 +4,7 @@ import { getUserById , getUsers, deleteUser, updatePassword, updateUser, updateP
 import { getUserByIdValidator, deleteUserValidation, updateUserValidator, updatePasswordValidator,
     asingCourseValidator} from "../middlewares/user-validators.js";
 import { deleteProfilePicture } from "../middlewares/picture-updates.js";
+import { uploadProfilePicture } from "../middlewares/multer-uploads.js";
 
 const router = Router()
 
@@ -12,7 +13,7 @@ router.get("/", getUsers)
 router.delete("/deleteUser/:uid", deleteUserValidation,deleteUser )
 router.patch("/updatePassword/:uid",updatePasswordValidator, updatePassword )
 router.put("/updateUser/:uid", updateUserValidator, updateUser )
-router.patch("/updateProfilePicture/:uid", deleteProfilePicture, updateProfilePicture)
+router.patch("/updateProfilePicture/:uid", deleteProfilePicture, uploadProfilePicture.single("profilePicture"), updateProfilePicture)
 router.patch("/asingCourse/:uid", asingCourseValidator, asingCourse)
 
 export default router

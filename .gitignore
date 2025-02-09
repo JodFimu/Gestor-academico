@@ -3,3 +3,6 @@ node_modules/
 package-lock.json
 
 .env
+
+public/uploads/course-pictures/*
+public/uploads/profile-pictures/*

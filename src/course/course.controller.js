@@ -4,7 +4,7 @@ import User from "../user/user.model.js";
 export const createCourse = async (req, res) => {
     try{
         const data = req.body
-        let coursePicture = req.file ? req.file.fileName : null;
+        let coursePicture = req.file ? req.file.filename : null;
 
         data.coursePicture = coursePicture
 
@@ -109,7 +109,7 @@ export const updateCourse = async (req, res) => {
 
         const course = await Course.findByIdAndUpdate(cid , body, {new: true})
         
-        res.status(200).json({
+        return res.status(200).json({
             success: true,
             message: "Curso actualizado exitosamente",
             course
@@ -142,7 +142,7 @@ export const getCourseByTeacher = async (req, res) => {
 
         return res.status(200).json({
             success: true,
-            message: "Cursos del profesor" + user.name + " " + user.surname,
+            message: "Cursos del profesor " + user.name + " " + user.surname,
             courses
         })
     }catch(err){
@@ -167,20 +167,20 @@ export const getStudentCourses = async (req, res) => {
             })
         }
 
-        const query = {student:uid, status:true}
-
-        const courses = await Course.find(query)
+        const courses = await user.course
 
         if(courses.length === 0){
             return res.status(400).json({
                 success: false,
-                message: "El estudiante no tiene cursos"
+                message: "El estudiante no tiene cursos",
+                courses: courses,
+                user: user
             })
         }
 
         res.status(200).json({
             success: true,
-            message: "Cursos del estudiante" + user.name + " " + user.surname,
+            message: "Cursos del estudiante " + user.name + " " + user.surname,
             courses
         })
 
